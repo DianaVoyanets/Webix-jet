@@ -10,12 +10,12 @@ export default class Contacts extends JetView {
 			id:"mylist",
 			select: true,
 			css:"contacts_list",
-				onClick: {
-					"fa-close": function(e,id) {
-						$$("mylist").remove(id);
-					}
+			onClick: {
+				"fa-close": function(e,id) {
+					$$("mylist").remove(id);
 				}
-		}
+			}
+		};
 
 		var contacts_form = {
 			view: "form",
@@ -25,18 +25,18 @@ export default class Contacts extends JetView {
 				{view:"text",label: "Email",name:"Email",width: 300},
 				{view: "spacer"}
 			]	
-		}
+		};
 
 		var ui = {
 			rows: [
 				Toolbar,
-				{ cols: [
-					contacts_list,
-					contacts_form
-				]
-			}
-		  ]
-		}
+				{ 
+					cols: [
+						contacts_list,
+						contacts_form
+					]
+				}]
+		};
 		return ui;
 	}
 
