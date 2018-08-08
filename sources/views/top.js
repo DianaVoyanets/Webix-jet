@@ -4,13 +4,15 @@ export default class TopView extends JetView{
         var header = {
             type:"header", template:"Menu"
         };
+        
         var menu = {
             view:"menu", id:"top:menu", 
             width:180, layout:"y", select:true,
             template:"<span class='webix_icon fa-#icon#'></span> #value# ",
             data:[
                 { value:"Contacts", id:"contacts", icon:"envelope-o" },
-                { value:"Settings",id:"settings",  icon:"briefcase" }
+                { value:"Data",id:"data",icon:"briefcase"},
+                { value:"Settings",id:"settings",  icon:"briefcase" },
             ]
         };
 
@@ -25,7 +27,7 @@ export default class TopView extends JetView{
                 ]}
             ]
         };
-
+         
         return ui;
     }
     init() {

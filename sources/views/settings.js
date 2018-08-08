@@ -3,6 +3,6 @@ import {data} from "models/records";
 
 export default class DataView extends JetView{
 	config() {
-		return { template:"Settings" };
+		return { view: "segmented",options: ["Eng","Rus"],width: 500 };
 	}
 }
