@@ -12,7 +12,7 @@ export default class Contacts extends JetView {
 			css:"contacts_list",
 			onClick: {
 				"fa-close": function(e,id) {
-					this.$$("mylist").remove(id);
+					this.remove(id);
 				}
 			}
 		};

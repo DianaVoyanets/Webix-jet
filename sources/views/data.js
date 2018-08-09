@@ -10,7 +10,7 @@ export default class Data extends JetView {
 			select: true,
 			on:{
 				onAfterSelect:function(id){ 
-					this.$$(id).show();
+					$$(id).show();
 				}
 			},
 			data: [ "Countries", "Statuses" ],
@@ -82,7 +82,7 @@ export default class Data extends JetView {
 
 	deleteSelectedItem(id) {
 		var selected = this.$$(id).getSelectedId();
-		
+
 		if (selected) {
 			this.$$(id).remove(selected);
 		}
