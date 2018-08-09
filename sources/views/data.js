@@ -1,17 +1,14 @@
-import {JetView} from "webix-jet";
 import {countries} from "models/countries";
 import {statuses} from "models/statuses";
 import Toolbar from "views/toolbar";
 
-export default class Data extends JetView {
+export default class Data extends Toolbar {
 	config() {
 		var side = {
 			view: "list",
 			select: true,
 			on:{
-				onAfterSelect:function(id){ 
-					$$(id).show();
-				}
+				onAfterSelect: (id) => this.$$(id).show()
 			},
 			data: [ "Countries", "Statuses" ],
 			width: 300
@@ -59,7 +56,7 @@ export default class Data extends JetView {
 
 		var ui = {
 			rows: [
-				Toolbar,
+				{$subview: Toolbar},
 				{cols: [
 					side,
 					main
@@ -73,7 +70,7 @@ export default class Data extends JetView {
 	init() {
 		this.$$("countries_dataTable").parse(countries);
 		this.$$("statuses_dataTable").parse(statuses);
-		// view.queryView({view:"label"}).hide();
+		//view.queryView({view:"label"}).hide();
 	}
 
 	addNewItem(obj,id) {
