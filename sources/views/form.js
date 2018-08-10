@@ -1,5 +1,7 @@
 import {JetView} from "webix-jet";
 import {user_collection} from "models/users_collection";
+import {countries_collection} from "models/countries_collection";
+import{statuses_collection} from "models/statuses_collection";
 
 export default class Form extends JetView {
 	config() {
@@ -9,8 +11,8 @@ export default class Form extends JetView {
 			elements: [
 				{ view: "text", label:"Name",name:"Name",width: 300 },
 				{ view: "text", label:"Email",name:"Email",width: 300 },
-				{ view: "combo",label:"Country",options: { body:{template:"#Country#",data:user_collection}}},
-				{ view: "combo",label:"Status",options: { body:{template:"#Status#",data:user_collection}}},
+				{ view: "combo",label:"Country",options: { body:{template:"#Name#",data:countries_collection}}},
+				{ view: "combo",label:"Status",options: { body:{template:"#Name#",data:statuses_collection}}},
 				{ view: "spacer"},
 				{ view: "button", value:"Update",
 					click: () => {

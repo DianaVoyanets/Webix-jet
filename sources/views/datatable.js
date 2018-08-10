@@ -23,8 +23,11 @@ export default class Datatable extends JetView {
 		return dataTable;
 	}
 	deleteSelectedItem() {
-		var selected =  this.getRoot().queryView({view:"datatable"}).getSelectedId();
-		if(selected) this.getRoot().queryView({view:"datatable"}).remove(selected);
+        var selected =  this.getRoot().queryView({view:"datatable"}).getSelectedId();
+		if(selected) {
+            this.getRoot().queryView({view:"datatable"}).remove(selected);
+        }
+        else return;
 	}
 
 }
