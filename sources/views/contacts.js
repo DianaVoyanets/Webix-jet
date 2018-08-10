@@ -1,47 +1,58 @@
 import {JetView} from "webix-jet";
-import {contacts} from "models/contacts";
 import Toolbar from "views/toolbar";
+import Form from "views/form";
+import {user_collection} from "models/users_collection";
 
 export default class Contacts extends JetView {
 	config() {
 		var contacts_list = {
-			view: "list",
-			template:"<div>#Name#<i class='fa fa-close'></i><br>#Email#</div>",
-			id:"mylist",
-			select: true,
-			css:"contacts_list",
-			onClick: {
-				"fa-close": function(e,id) {
-					this.remove(id);
+			rows: [ Toolbar, {
+				view: "list",
+				template:"<div>#Name#<i class='fa fa-close'></i><br>#Email#</div>",
+				id: "mylist",
+        	    select: true,
+				css:"contacts_list",
+				on: {
+					onAfterSelect: (id) => {
+						this.show("../contacts?id="+id);
+					}
+				},
+        	    onClick: {
+        		    "fa-close": function(e,id) {
+        			    this.remove(id);
+        		    }
 				}
-			}
+			},
+			{
+				view:"button",
+				value:"Add",
+				click:() => {
+					this.show("../contacts?id=add");
+				}
+			}]
 		};
-
-		var contacts_form = {
-			view: "form",
-			id:"myform",
-			elements:[
-				{view:"text",label: "User name",name:"Name",width: 300},
-				{view:"text",label: "Email",name:"Email",width: 300},
-				{view: "spacer"}
-			]	
-		};
-
+        
 		var ui = {
 			rows: [
-				Toolbar,
 				{ 
 					cols: [
 						contacts_list,
-						contacts_form
+						Form
 					]
-				}]
+				},
+			]
 		};
+        
 		return ui;
 	}
-
-	init(view) {
-		view.queryView({ view: "list" }).parse(contacts);
-		this.$$("myform").bind(this.$$("mylist"));
+    
+	init() {
+		this.$$("mylist").parse(user_collection);
+		this.on(this.app, "onDataUpdate", (data) => {
+			if (data) {
+				user_collection.updateItem(data.id, data);
+			}
+		});
+        
 	}
 }

@@ -13,7 +13,7 @@ export default class TopView extends JetView{
 			data:[
 				{ value:"Contacts", id:"contacts", icon:"envelope-o" },
 				{ value:"Data",id:"data",icon:"briefcase"},
-				{ value:"Settings",id:"settings",  icon:"briefcase" },
+				{ value:"Settings",id:"settings", icon:"briefcase" },
 			]
 		};
 
