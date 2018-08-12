@@ -7,7 +7,7 @@ export default class Settings extends JetView{
 			view: "toolbar",
 			height: 50,
 			elements: [
-				{view: "label",label:"Settings",css: "settings_label"}
+				{view: "label",label:webix.i18n.settings.Settings,css: "settings_label"}
 			]
 		};
 		return {
@@ -16,8 +16,8 @@ export default class Settings extends JetView{
 				{   
 					view: "combo",
 					id:"combo",
-                    label:"Language",
-                    value: "English",
+					label:"Language",
+					value: "English",
 					options:["English","Russian"],
 					on: {
 						"onChange":function(id) {

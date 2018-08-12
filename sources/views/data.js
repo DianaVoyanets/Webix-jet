@@ -18,15 +18,15 @@ export default class Data extends Settings {
 				{id:"Statuses",name:"Statuses",value:webix.i18n.data.Statuses}
 			],
 			width: 300
-        };
+		};
         
-        var dataToolbar = {
-            view: "toolbar",
-            height:50, 
-            elements: [
-                {view: "label",label: "Data",css:"data_label"}
-            ]
-        }
+		var dataToolbar = {
+			view: "toolbar",
+			height:50, 
+			elements: [
+				{view: "label",label: webix.i18n.data.Data,name:"Data",css:"data_label"}
+			]
+		};
 
 		var main = {
 			cells: [ 
@@ -36,7 +36,7 @@ export default class Data extends Settings {
 
 		var ui = {
 			rows: [
-                dataToolbar,
+				dataToolbar,
 				{cols: [
 					side,
 					main

@@ -8,7 +8,8 @@ export let en = webix.i18n.locales["en-US"]={
 	},
 	data: {
 		Countries: "Country",
-		Statuses: "Statuses"
+        Statuses: "Statuses",
+        Data: "Data"
 	},
 	contacts: {
 		Add:"Add"
@@ -22,5 +23,11 @@ export let en = webix.i18n.locales["en-US"]={
 	datatable: {
 		Add: "Add",
 		Delete: "Delete"
-	}
+    },
+    toolbar: {
+        Contacts: "Contacts"
+    },
+    settings: {
+        Settings: "Settings"
+    }
 };
