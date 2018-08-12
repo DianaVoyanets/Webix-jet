@@ -1,15 +1,25 @@
 import Datatable from "views/datatable";
-import {countries} from "models/countries";
+import {countries_collection} from "models/countries_collection";
 
 export default class CountriesDataTable extends Datatable {
 	init() {
-		this.getRoot().queryView({view:"datatable"}).parse(countries);
-		this.getRoot().queryView({view:"datatable"}).config.columns[1].header = "Name";
-    }
+		var countiesDatatable = this.getRoot().queryView({view:"datatable"});
+		countiesDatatable.sync(countries_collection);
+		countiesDatatable.config.columns[1].header = "Name";
+	}
 
-    add() {
-        this.getRoot().queryView({view:"datatable"}).add({Name:"Belarus"});
-    }
+	add() {
+		countries_collection.add({"Name":"Belarus"});
+	}
+    
+	remove() {
+		var selected = this.getRoot().queryView({view:"datatable"}).getSelectedId();
+		if(selected) {
+			countries_collection.remove(selected);
+		}
+		else return;
+	}
     
 }
+    
 

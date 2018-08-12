@@ -1,7 +1,19 @@
-import {JetView} from "webix-jet";
+import Settings from "views/settings";
 
-export default class Datatable extends JetView {
+export default class Datatable extends Settings {
 	config() {
+		// webix.i18n.locales["en-US"]={
+		// 	Add: "Add",
+		// 	Delete: "Delete"
+		// };
+    
+		// webix.i18n.locales["ru-RU"]={
+		// 	Add: "Добавить",
+		// 	Delete: "Удалить"
+		// };
+        
+		//webix.i18n.setLocale("ru-RU");
+
 		var dataTable = {
 			rows: [{
 				editable: true,
@@ -14,20 +26,13 @@ export default class Datatable extends JetView {
 					{ id:"Name",header:"Name",sort:"string",editor:"text"},
 				]   
 			},
-			{ view: "button",value: "Add new",click:() => this.add()},
-			{ view: "button",value: "Delete selected",click:() => {
-				this.deleteSelectedItem();
+			{ view: "button",name: "Add",value: webix.i18n.datatable.Add,click:() => this.add()},
+			{ view: "button",name: "Delete",value:webix.i18n.datatable.Delete,click:() => {
+				this.remove();
 			}}
 			]
 		};
 		return dataTable;
-	}
-	deleteSelectedItem() {
-        var selected =  this.getRoot().queryView({view:"datatable"}).getSelectedId();
-		if(selected) {
-            this.getRoot().queryView({view:"datatable"}).remove(selected);
-        }
-        else return;
 	}
 
 }

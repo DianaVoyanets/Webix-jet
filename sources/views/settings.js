@@ -1,15 +1,38 @@
 import {JetView} from "webix-jet";
-import Toolbar  from "views/toolbar";
 
 
-export default class DataView extends JetView{
+export default class Settings extends JetView{
 	config() {
-		return {
-			rows:[
-				Toolbar,
-				{ view: "select",label: "Language",options: ["Eng","Rus"],width: 500 }
+		var settingsToolbar = {
+			view: "toolbar",
+			height: 50,
+			elements: [
+				{view: "label",label:"Settings",css: "settings_label"}
 			]
 		};
-		
+		return {
+			rows:[
+				settingsToolbar,
+				{   
+					view: "combo",
+					id:"combo",
+                    label:"Language",
+                    value: "English",
+					options:["English","Russian"],
+					on: {
+						"onChange":function(id) {
+							if(id == "Russian") {
+								webix.i18n.setLocale("ru-RU");
+							}
+							else  webix.i18n.setLocale("en-US");
+						}
+					}
+				}
+			]
+		}; 
 	}
 }
+
+
+
+

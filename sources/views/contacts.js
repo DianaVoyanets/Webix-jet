@@ -1,33 +1,37 @@
-import {JetView} from "webix-jet";
+import Settings from "views/settings";
 import Toolbar from "views/toolbar";
 import Form from "views/form";
-import {user_collection} from "models/users_collection";
+import {user_collection} from "models/contacts_collection";
 
-export default class Contacts extends JetView {
+export default class Contacts extends Settings {
 	config() {
 		var contacts_list = {
 			rows: [ Toolbar, {
 				view: "list",
 				template:"<div>#Name#<i class='fa fa-close'></i><br>#Email#</div>",
-				id: "mylist",
+				localId: "mylist",
         	    select: true,
 				css:"contacts_list",
 				on: {
-					onAfterSelect: (id) => {
-						this.show("../contacts?id="+id);
+					"onAfterSelect": (id) => {
+						var path = "contacts?id="+id;
+						webix.delay(()=>{
+							this.show(path);
+						});
+						
 					}
 				},
         	    onClick: {
         		    "fa-close": function(e,id) {
-        			    this.remove(id);
+        			    user_collection.remove(id);
         		    }
 				}
 			},
 			{
 				view:"button",
-				value:"Add",
+				value:webix.i18n.contacts.Add,
 				click:() => {
-					this.show("../contacts?id=add");
+					user_collection.add({"Name":"Alex Wanny","Email":"alex@gmail.com","Status":1,"Country":2});
 				}
 			}]
 		};
@@ -53,6 +57,17 @@ export default class Contacts extends JetView {
 				user_collection.updateItem(data.id, data);
 			}
 		});
-        
+		this.$$("mylist").sync(user_collection);
+	}
+
+	urlChange(view) {
+		user_collection.waitData.then(()=>{
+			var id = this.getParam("id") || user_collection.getFirstId();
+			if(user_collection.exists(id)) {
+				view.queryView({view:"list"}).select(id);
+			}
+		});
+		
 	}
 }
+

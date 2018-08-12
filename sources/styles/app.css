@@ -102,7 +102,7 @@
 	color:#ddd;
 }
 
-.toolbar_label {
+.toolbar_label,.data_label,.settings_label {
 	text-align: center;
 }
 

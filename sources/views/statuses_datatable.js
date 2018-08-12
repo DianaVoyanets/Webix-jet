@@ -1,15 +1,23 @@
 import Datatable from "views/datatable";
-import { statuses } from "models/statuses";
+import { statuses_collection } from "models/statuses_collection";
 
 
 export default class StatusesDataTable extends Datatable {
    
-init() {
-    this.getRoot().queryView({view:"datatable"}).parse(statuses);
-    this.getRoot().queryView({view:"datatable"}).config.columns[1].header = "Icon";
-}
+	init() {
+		var dataTable = this.getRoot().queryView({view:"datatable"});
+		dataTable.config.columns[1].header = "Icon";
+		dataTable.sync(statuses_collection);
+	}
 
-add() {
-    this.getRoot().queryView({view:"datatable"}).add({Name:"Busy"});
+	add() {
+		statuses_collection.add({"Name":"Busy","Icon":"cogs"});
+	}
+    
+	remove() {
+		var selected = this.getRoot().queryView({view:"datatable"}).getSelectedId();
+		if(selected) {
+			statuses_collection.remove(selected);
+		}
+	}
 }
-};

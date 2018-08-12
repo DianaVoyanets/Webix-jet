@@ -1,5 +1,7 @@
 import "./styles/app.css";
 import { JetApp, EmptyRouter, HashRouter } from "webix-jet";
+import "./locales/en";
+import "./locales/ru";
 
 export default class MyApp extends JetApp {
 	constructor(config) {
@@ -8,13 +10,18 @@ export default class MyApp extends JetApp {
 			version : VERSION,
 			router 	: BUILD_AS_MODULE ? EmptyRouter : HashRouter,
 			debug 	: !PRODUCTION,
-			start 	: "/top/contacts?id=1"
+			start 	: "/top/contacts"
 		};
 
 		super({ ...defaults, ...config });
 	}
 }
 
-if (!BUILD_AS_MODULE){
-	webix.ready(() => new MyApp().render() );
+if (!BUILD_AS_MODULE) {
+	webix.ready(() => {
+		webix.i18n.setLocale("en-US");
+    
+		let app = new MyApp();
+		app.render(); 
+	});
 }
