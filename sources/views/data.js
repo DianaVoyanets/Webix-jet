@@ -24,7 +24,7 @@ export default class Data extends Settings {
 			view: "toolbar",
 			height:50, 
 			elements: [
-				{view: "label",label: webix.i18n.data.Data,name:"Data",css:"data_label"}
+				{view: "label",label: webix.i18n.data.Datas,name:"Data",css:"data_label"}
 			]
 		};
 

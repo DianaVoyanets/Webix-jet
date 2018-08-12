@@ -28,6 +28,7 @@ export let ru = webix.i18n.locales["ru-RU"]={
         Contacts: "Контакты"
     },
     settings: {
-        Settings: "Настройки"
+        Settings: "Настройки",
+        Language: "Язык:"
     }
 };

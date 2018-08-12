@@ -28,6 +28,7 @@ export let en = webix.i18n.locales["en-US"]={
         Contacts: "Contacts"
     },
     settings: {
-        Settings: "Settings"
+        Settings: "Settings",
+        Language: "Language:"
     }
 };
