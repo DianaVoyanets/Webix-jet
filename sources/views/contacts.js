@@ -1,39 +1,47 @@
 import Settings from "views/settings";
-import Toolbar from "views/toolbar";
 import Form from "views/form";
 import {user_collection} from "models/contacts_collection";
 
 export default class Contacts extends Settings {
 	config() {
 		var contacts_list = {
-			rows: [ Toolbar, {
-				view: "list",
-				template:"<div>#Name#<i class='fa fa-close'></i><br>#Email#</div>",
-				localId: "mylist",
+			rows: [ 
+				{view: "toolbar",
+					localId: "my_toolbar",
+					height:50, 
+					elements: [{ 
+						view: "label", 
+						label: webix.i18n.toolbar.Contacts, 
+						css: "toolbar_label"
+					}]}, 
+				{
+					view: "list",
+					template:"<div>#Name#<i class='fa fa-close'></i><br>#Email#</div>",
+					localId: "mylist",
         	    select: true,
-				css:"contacts_list",
-				on: {
-					"onAfterSelect": (id) => {
-						var path = "contacts?id="+id;
-						webix.delay(()=>{
-							this.show(path);
-						});
+					css:"contacts_list",
+					on: {
+						"onAfterSelect": (id) => {
+							var path = "contacts?id="+id;
+							webix.delay(()=>{
+								this.show(path);
+							});
 						
-					}
-				},
+						}
+					},
         	    onClick: {
         		    "fa-close": function(e,id) {
         			    user_collection.remove(id);
         		    }
-				}
-			},
-			{
-				view:"button",
-				value:webix.i18n.contacts.Add,
-				click:() => {
-					user_collection.add({"Name":"Alex Wanny","Email":"alex@gmail.com","Status":1,"Country":2});
-				}
-			}]
+					}
+				},
+				{
+					view:"button",
+					value:webix.i18n.contacts.Add,
+					click:() => {
+						user_collection.add({"Name":"Alex Wanny","Email":"alex@gmail.com","Status":1,"Country":2});
+					}
+				}]
 		};
         
 		var ui = {

@@ -17,7 +17,6 @@ export default class Settings extends JetView{
 					view: "combo",
 					id:"combo",
 					label:webix.i18n.settings.Language,
-					value: "English",
 					options:["English","Russian"],
 					on: {
 						"onChange":function(id) {

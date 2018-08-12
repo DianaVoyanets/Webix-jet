@@ -14,7 +14,7 @@ export default class Form extends Settings {
 				{ view: "combo",label:webix.i18n.form.Country,name:"Country",options: { body:{template:"#Name#",data:countries_collection}}},
 				{ view: "combo",label:webix.i18n.form.Status,name:"Status",options: { body:{template:"#Name#",data:statuses_collection}}},
 				{ view: "spacer"},
-				{ view: "button", name:"Update",value:webix.i18n.form.Update,
+				{ view: "button", value:webix.i18n.form.Update,
 					click: () => {
 						const values = this.getRoot().getValues();
 						this.app.callEvent("onDataUpdate", [values]);

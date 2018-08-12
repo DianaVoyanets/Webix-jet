@@ -4,7 +4,7 @@ import Settings from "views/settings";
 export default class TopView extends Settings{
 	config() {
 		var header = {
-			type:"header", name: "Menu",template: webix.i18n.top.Menu
+			type:"header",template: webix.i18n.top.Menu
 		};
         
 		var menu = {
@@ -14,7 +14,7 @@ export default class TopView extends Settings{
 			data:[
 				{ name: "Contacts",value:webix.i18n.top.Contacts, id:"contacts", icon:"envelope-o" },
 				{ name: "Data",value:webix.i18n.top.Data,id:"data",icon:"briefcase"},
-				{ name: "Settings",value:webix.i18n.top.Settings,id:"settings", icon:"briefcase" },
+				{ name: "Settings",value:webix.i18n.top.Settings,id:"settings", icon:"cog" },
 			]
 		};
 

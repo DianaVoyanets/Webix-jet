@@ -8,8 +8,8 @@ export let ru = webix.i18n.locales["ru-RU"]={
 	},
 	data: {
 		Countries: "Города",
-        Statuses: "Статусы",
-        Data: "Данные"
+		Statuses: "Статусы",
+		Data: "Данные"
 	},
 	contacts: {
 		Add:"Добавить"
@@ -23,12 +23,12 @@ export let ru = webix.i18n.locales["ru-RU"]={
 	datatable: {
 		Add: "Добавить",
 		Delete: "Удалить"
-    },
-    toolbar: {
-        Contacts: "Контакты"
-    },
-    settings: {
-        Settings: "Настройки",
-        Language: "Язык:"
-    }
+	},
+	toolbar: {
+		Contacts: "Контакты"
+	},
+	settings: {
+		Settings: "Настройки",
+		Language: "Язык:"
+	}
 };
